@@ -78,11 +78,9 @@ public class MainActivity extends AppCompatActivity {
 
 
         deleteTrackButton.setOnClickListener(new View.OnClickListener() {
-            String id = idEditText.getText().toString();
             @Override
-
             public void onClick(View v) {
-                deleteTrack(id);
+                deleteTrack();
             }
         });
     }
@@ -180,20 +178,24 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    private void deleteTrack(String id){
+    private void deleteTrack() {
+        String id = idEditText.getText().toString();
 
-        tracksApiService.deleteTrack(id).enqueue(new Callback<Void>() {
+        Call<Void> call = tracksApiService.deleteTrack(id);
+        call.enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
-                Toast.makeText(MainActivity.this, "Track deleted successfully", Toast.LENGTH_SHORT).show();
-
-                getAllTracks();
+                if (response.isSuccessful()) {
+                    Toast.makeText(MainActivity.this, "Track deleted successfully", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(MainActivity.this, "Failed to delete track", Toast.LENGTH_SHORT).show();
+                }
             }
 
             @Override
             public void onFailure(Call<Void> call, Throwable t) {
-                Toast.makeText(MainActivity.this, "Error deleting track", Toast.LENGTH_SHORT).show();
-
+                Log.e("API Error", "Failed to delete track", t);
+                Toast.makeText(MainActivity.this, "Error: " + t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
     }
