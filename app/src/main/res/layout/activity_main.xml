@@ -1,0 +1,62 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    tools:context=".MainActivity">
+
+    <!-- Título de la actividad -->
+    <EditText
+        android:id="@+id/idEditText"
+        android:layout_width="390dp"
+        android:layout_height="98dp"
+        android:hint="Introduce la ID" />
+
+    <EditText
+        android:id="@+id/titleEditText"
+        android:layout_width="385dp"
+        android:layout_height="83dp"
+        android:hint="Introduce el Titulo" />
+
+    <EditText
+        android:id="@+id/singerEditText"
+        android:layout_width="387dp"
+        android:layout_height="88dp"
+        android:hint="Introduce el Cantante" />
+
+    <Button
+        android:id="@+id/addTrackButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Añadir Tema" />
+
+    <Button
+        android:id="@+id/getTrackButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Mostrar Temas" />
+
+    <Button
+        android:id="@+id/updateTrackButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Actualizar Tema" />
+
+    <Button
+        android:id="@+id/deleteTrackButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Borrar Tema" />
+
+    <!-- TextView para mostrar los resultados -->
+    <TextView
+        android:id="@+id/resultsTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:padding="8dp"
+        android:text=""
+        android:textSize="16sp" />
+</LinearLayout>
