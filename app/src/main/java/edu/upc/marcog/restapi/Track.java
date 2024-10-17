@@ -2,14 +2,14 @@ package edu.upc.marcog.restapi;
 
 public class Track {
     private String id;
-    private String titulo;
-    private String cantante;
+    private String title;
+    private String singer;
 
     // Constructor
     public Track(String id, String title, String singer) {
         this.id = id;
-        this.titulo = title;
-        this.cantante = singer;
+        this.title = title;
+        this.singer = singer;
     }
 
     // Getters y Setters
@@ -22,18 +22,18 @@ public class Track {
     }
 
     public String getTitle() {
-        return titulo;
+        return title;
     }
 
     public void setTitle(String title) {
-        this.titulo = title;
+        this.title = title;
     }
 
     public String getSinger() {
-        return cantante;
+        return singer;
     }
 
     public void setSinger(String singer) {
-        this.cantante = singer;
+        this.singer = singer;
     }
 }

@@ -54,9 +54,10 @@ public class MainActivity extends AppCompatActivity {
 
 
         addTrackButton.setOnClickListener(new View.OnClickListener() {
+            String id = null;
             @Override
             public void onClick(View v) {
-                addTrack();
+                addTrack(id);
             }
         });
 
@@ -77,21 +78,20 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-        deleteTrackButton.setOnClickListener(new View.OnClickListener() {
-            String id = idEditText.getText().toString();
-            @Override
 
+        deleteTrackButton.setOnClickListener(new View.OnClickListener() {
+            @Override
             public void onClick(View v) {
-                deleteTrack(id);
+                deleteTrack();
             }
         });
     }
 
-    private void addTrack() {
+    private void addTrack(String id) {
         String title = titleEditText.getText().toString();
         String singer = singerEditText.getText().toString();
 
-        Track track = new Track(null, title, singer);
+        Track track = new Track(id , title, singer);
         Call<Track> call = tracksApiService.addTrack(track);
         call.enqueue(new Callback<Track>() {
             @Override
@@ -158,6 +158,8 @@ public class MainActivity extends AppCompatActivity {
             return;
         }
 
+        deleteTrack();
+        addTrack(id);
 
         Track updatedTrack = new Track(id, title, singer);
         Call<Track> call = tracksApiService.updateTrack(id, updatedTrack);
@@ -169,7 +171,7 @@ public class MainActivity extends AppCompatActivity {
                 if (response.isSuccessful()) {
                     Toast.makeText(MainActivity.this, "Track updated successfully", Toast.LENGTH_SHORT).show();
                 } else {
-                    Toast.makeText(MainActivity.this, "Update failed", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, "Update updated successfully", Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -180,20 +182,24 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    private void deleteTrack(String id){
+    private void deleteTrack() {
+        String id = idEditText.getText().toString();
 
-        tracksApiService.deleteTrack(id).enqueue(new Callback<Void>() {
+        Call<Void> call = tracksApiService.deleteTrack(id);
+        call.enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
-                Toast.makeText(MainActivity.this, "Track deleted successfully", Toast.LENGTH_SHORT).show();
-
-                getAllTracks();
+                if (response.isSuccessful()) {
+                    Toast.makeText(MainActivity.this, "Track deleted successfully", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(MainActivity.this, "Failed to delete track", Toast.LENGTH_SHORT).show();
+                }
             }
 
             @Override
             public void onFailure(Call<Void> call, Throwable t) {
-                Toast.makeText(MainActivity.this, "Error deleting track", Toast.LENGTH_SHORT).show();
-
+                Log.e("API Error", "Failed to delete track", t);
+                Toast.makeText(MainActivity.this, "Error: " + t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
     }
