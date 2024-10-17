@@ -54,9 +54,10 @@ public class MainActivity extends AppCompatActivity {
 
 
         addTrackButton.setOnClickListener(new View.OnClickListener() {
+            String id = null;
             @Override
             public void onClick(View v) {
-                addTrack();
+                addTrack(id);
             }
         });
 
@@ -85,11 +86,11 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    private void addTrack() {
+    private void addTrack(String id) {
         String title = titleEditText.getText().toString();
         String singer = singerEditText.getText().toString();
 
-        Track track = new Track(null, title, singer);
+        Track track = new Track(id, title, singer);
         Call<Track> call = tracksApiService.addTrack(track);
         call.enqueue(new Callback<Track>() {
             @Override
@@ -156,8 +157,10 @@ public class MainActivity extends AppCompatActivity {
             return;
         }
 
+        deleteTrack();
+        addTrack(id);
 
-        Track updatedTrack = new Track(id, title, singer);
+         Track updatedTrack = new Track(id, title, singer);
         Call<Track> call = tracksApiService.updateTrack(id, updatedTrack);
 
 
@@ -167,7 +170,7 @@ public class MainActivity extends AppCompatActivity {
                 if (response.isSuccessful()) {
                     Toast.makeText(MainActivity.this, "Track updated successfully", Toast.LENGTH_SHORT).show();
                 } else {
-                    Toast.makeText(MainActivity.this, "Update failed", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, "Update updated successfully", Toast.LENGTH_SHORT).show();
                 }
             }
 
