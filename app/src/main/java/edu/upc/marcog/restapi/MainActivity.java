@@ -78,6 +78,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
+
         deleteTrackButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -90,7 +91,9 @@ public class MainActivity extends AppCompatActivity {
         String title = titleEditText.getText().toString();
         String singer = singerEditText.getText().toString();
 
-        Track track = new Track(id, title, singer);
+
+        Track track = new Track(id , title, singer);
+
         Call<Track> call = tracksApiService.addTrack(track);
         call.enqueue(new Callback<Track>() {
             @Override
