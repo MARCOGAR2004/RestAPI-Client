@@ -91,7 +91,9 @@ public class MainActivity extends AppCompatActivity {
         String title = titleEditText.getText().toString();
         String singer = singerEditText.getText().toString();
 
+
         Track track = new Track(id , title, singer);
+
         Call<Track> call = tracksApiService.addTrack(track);
         call.enqueue(new Callback<Track>() {
             @Override
@@ -161,7 +163,7 @@ public class MainActivity extends AppCompatActivity {
         deleteTrack();
         addTrack(id);
 
-        Track updatedTrack = new Track(id, title, singer);
+         Track updatedTrack = new Track(id, title, singer);
         Call<Track> call = tracksApiService.updateTrack(id, updatedTrack);
 
 
