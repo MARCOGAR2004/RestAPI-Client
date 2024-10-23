@@ -1,62 +1,42 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="16dp"
-    tools:context=".MainActivity">
+    android:padding="16dp">
 
-    <!-- Título de la actividad -->
-    <EditText
-        android:id="@+id/idEditText"
-        android:layout_width="390dp"
-        android:layout_height="98dp"
-        android:hint="Introduce la ID" />
+    <!-- Otros componentes como EditText y Buttons -->
 
     <EditText
         android:id="@+id/titleEditText"
         android:layout_width="385dp"
         android:layout_height="83dp"
-        android:hint="Introduce el Titulo" />
+        android:hint="Enter Title" />
 
     <EditText
         android:id="@+id/singerEditText"
         android:layout_width="387dp"
         android:layout_height="88dp"
-        android:hint="Introduce el Cantante" />
+        android:hint="Enter Singer" />
 
     <Button
         android:id="@+id/addTrackButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Añadir Tema" />
+        android:text="Add Track" />
 
     <Button
         android:id="@+id/getTrackButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Mostrar Temas" />
+        android:text="Get All Tracks" />
 
-    <Button
-        android:id="@+id/updateTrackButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Actualizar Tema" />
-
-    <Button
-        android:id="@+id/deleteTrackButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Borrar Tema" />
-
-    <!-- TextView para mostrar los resultados -->
-    <TextView
-        android:id="@+id/resultsTextView"
+    <!-- ListView para mostrar los resultados -->
+    <ListView
+        android:id="@+id/tracksListView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:padding="8dp"
-        android:text=""
-        android:textSize="16sp" />
+        android:padding="8dp" />
+
 </LinearLayout>
