@@ -1,0 +1,28 @@
+R_DEF: Internal format may change without notice
+local
+color black
+color white
+drawable ic_launcher_background
+drawable ic_launcher_foreground
+id addTrackButton
+id backToMainButton
+id deleteTrackButton
+id getTrackButton
+id singerEditText
+id titleEditText
+id trackDetailsTextView
+id trackIdTextView
+id trackSingerTextView
+id trackTitleTextView
+id tracksListView
+id updateTrackButton
+layout activity_main
+layout activity_track_detail
+layout list_item_track
+mipmap ic_launcher
+mipmap ic_launcher_round
+string app_name
+style Base.Theme.RestApi
+style Theme.RestApi
+xml backup_rules
+xml data_extraction_rules
